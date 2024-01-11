@@ -11,7 +11,7 @@ COPY ./Cargo.toml .
 
 # Now we finally compile our app
 COPY ./src ./src
-RUN --mount=type=ssh cargo install --path .
+RUN cargo install --path .
 
 FROM debian:buster-slim
 RUN apt-get update && \
