@@ -3,6 +3,7 @@ use axum::{http::StatusCode, routing::any, Router};
 #[tokio::main]
 async fn main() {
     let app = Router::new()
+        .route("/health", any(two_hundred))
         .route("/", any(two_oh_four))
         .route("/*0", any(two_oh_four));
     let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
@@ -10,4 +11,8 @@ async fn main() {
 }
 async fn two_oh_four() -> StatusCode {
     StatusCode::NO_CONTENT
+}
+
+async fn two_hundred() -> StatusCode {
+    StatusCode::OK
 }
