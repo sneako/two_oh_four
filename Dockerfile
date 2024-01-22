@@ -17,5 +17,5 @@ FROM debian:buster-slim
 RUN apt-get update && \
   apt-get install -y openssl ca-certificates && \
   rm -rf /var/lib/apt/lists/*
-COPY --from=builder /usr/local/cargo/bin/two_oh_four /usr/local/bin/mirall
+COPY --from=builder /usr/local/cargo/bin/two_oh_four /usr/local/bin/two_oh_four
 CMD ["two_oh_four"]
